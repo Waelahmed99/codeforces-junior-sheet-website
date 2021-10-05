@@ -1,0 +1,62 @@
+header {
+    background-color: white;
+}
+
+nav {
+    display: flex;   
+    padding: 0px 10px;
+    align-items: center;
+}
+
+.logo {
+    flex-grow: 1;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.secondary-btn {
+    margin-right: 10px;
+    color: #9d9999;
+    font-weight: 300;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.contribute-btn {
+    border: 2px solid #00c5ff;
+    border-radius: 20px;
+    padding: 3px 10px;
+    color: #00c5ff;
+    text-decoration: none;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.title {
+    font-size: 2em;
+    margin: 25px 0px 5px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin:0;
+    margin: 0;
+    color: #9d9999;
+}
+
+.descriptive-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;    
+}
+
+.test {
+    display: inline-block;
+    height: auto;
+}
