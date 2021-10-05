@@ -2,9 +2,7 @@ import React from 'react'
 import './styles.css'
 import FAQ from '../FAQ';
 
-function HomePage() {
-    
-
+function MainPage() {
     return (
         <div>
             <div className="description">
@@ -21,4 +19,4 @@ function HomePage() {
     )
 }
 
-export default HomePage
+export default MainPage
