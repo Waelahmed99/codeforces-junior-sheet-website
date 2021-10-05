@@ -1,7 +1,7 @@
 :root {
-    --desc-width: 0px;
-    --desc-title-size: 1.2em;
-    --desc-paragraph-size: 1em;
+    --desc-width: 200px;
+    --desc-title-size: 1.5em;
+    --desc-paragraph-size: 1.2em;
 }
 
 .description {
@@ -11,8 +11,9 @@
 }
 
 .description > p {
-    word-wrap: break-word;
+    white-space: pre-line;
     text-align: center;
+    margin: 0px;
 }
 
 .description > :first-child {
@@ -25,10 +26,14 @@
     padding: 0px var(--desc-width);
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (max-width: 800px) {
     :root {
-        --desc-width: 200px;
-        --desc-title-size: 1.5em;
-        --desc-paragraph-size: 1.2em;
+        --desc-width: 0px;
+        --desc-title-size: 1.2em;
+        --desc-paragraph-size: 1em;
+    }
+
+    .description > p {
+        white-space: normal;
     }
 }
