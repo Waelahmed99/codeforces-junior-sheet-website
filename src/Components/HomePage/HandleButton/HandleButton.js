@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import HandleModal from '../HandleModal'
 import './styles.css'
-import { Link } from 'react-router-dom';
 
 function HandleButton() {
+    let [ showModal, setVisibility ] = useState(false)
+
     return (
-        <Link className="wrapper" to="/handle">
-            <a href="/handle">
-                <span>Get Started!</span>
-            </a>
-        </Link>
+        <div>
+            <div className="wrapper" onClick={() => setVisibility(!showModal)}>
+                <div>
+                    <span>Get Started!</span>
+                </div>
+            </div>
+
+            { showModal && <HandleModal closeModal={setVisibility}/>}
+        </div>
     )
 }
 
