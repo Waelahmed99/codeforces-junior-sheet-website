@@ -1,6 +1,7 @@
 import React from 'react'
 import './styles.css'
 import FAQ from '../FAQ';
+import { Link } from 'react-router-dom';
 
 function MainPage() {
     return (
@@ -12,6 +13,13 @@ function MainPage() {
                     Instead of using a static Google Sheet for recording your submissions
                     here you can focus on solving, and we will do the rest for you!`}
                 </p>
+
+                <Link className="wrapper" to="/handle">
+                    <a href="/handle">
+                        <span>Get Started!</span>
+                    </a>
+                </Link>
+
             </div>
 
             <FAQ />
