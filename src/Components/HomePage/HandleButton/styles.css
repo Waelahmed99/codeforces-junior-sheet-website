@@ -1,0 +1,58 @@
+/* 
+========================
+   GET STARTED BUTTON
+========================
+*/
+.wrapper{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+  
+.wrapper > a{
+    padding: 5px;
+    display: block;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #00c5ff;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    transition: all .35s;
+    color: white;
+}
+  
+.wrapper > a span{
+    position: relative;
+    z-index: 2;
+}
+
+.wrapper > a:after{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #00c5ff;
+    transition: all .35s;
+}
+  
+.wrapper > a:hover{
+    color: #fff;
+}
+  
+.wrapper > a:hover:after{
+    width: 100%;
+}
+
+.no-underline {
+    text-decoration: none;
+}
