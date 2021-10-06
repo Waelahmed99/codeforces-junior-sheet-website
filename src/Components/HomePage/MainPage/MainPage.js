@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.css'
 import FAQ from '../FAQ';
-import { Link } from 'react-router-dom';
+import HandleButton from '../HandleButton';
 
 function MainPage() {
     return (
@@ -14,11 +14,7 @@ function MainPage() {
                     here you can focus on solving, and we will do the rest for you!`}
                 </p>
 
-                <Link className="wrapper" to="/handle">
-                    <a href="/handle">
-                        <span>Get Started!</span>
-                    </a>
-                </Link>
+                <HandleButton />
 
             </div>
 
