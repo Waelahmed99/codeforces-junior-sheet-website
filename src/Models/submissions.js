@@ -6,12 +6,19 @@ function extractSubmissions(submissions) {
         const el = new Submission(element)
         const key = (el.contestId + el.index)
         if (submissionsList.has(key)) {
-            const currentVerdict = submissionsList.get(key).verdict
+            const insertedSubmission = submissionsList.get(key)
+            const currentVerdict = insertedSubmission.verdict
+
+            if (currentVerdict !== verdicts.ACCEPTED && el.verdict !== verdicts.ACCEPTED)
+                insertedSubmission.count += 1
+            el.count = insertedSubmission.count
             if (currentVerdict !== verdicts.ACCEPTED)
                 submissionsList.set(key, el)
-        } else 
+            else
+                submissionsList.set(key, insertedSubmission)
+        } else
             submissionsList.set(key, el)
-        
+
     });
 
     return submissionsList
@@ -32,6 +39,7 @@ class Submission {
         this.index = submission.problem.index
         this.contestId = submission.contestId
         this.verdict = this.getVerdict(submission.verdict)
+        this.count = (this.verdict !== verdicts.ACCEPTED ? 1 : 0)
     }
 
     getVerdict(verdict) {
