@@ -4,12 +4,13 @@ function extractSubmissions(submissions) {
     let submissionsList = new Map()
     submissions.forEach(element => {
         const el = new Submission(element)
-        if (submissionsList.has(el.name)) {
-            const currentVerdict = submissionsList.get(el.name).verdict
+        const key = (el.contestId + el.index)
+        if (submissionsList.has(key)) {
+            const currentVerdict = submissionsList.get(key).verdict
             if (currentVerdict !== verdicts.ACCEPTED)
-                submissionsList.set(el.name, el)
+                submissionsList.set(key, el)
         } else 
-            submissionsList.set(el.name, el)
+            submissionsList.set(key, el)
         
     });
 
