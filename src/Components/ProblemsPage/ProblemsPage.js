@@ -3,6 +3,7 @@ import './styles.css'
 import { extractSubmissions } from '../../Models/submissions'
 import Loading from './Loading'
 import ProblemRow from './ProblemRow'
+import { sheetData } from '../../Models/Sheet1'
 
 function ProblemsPage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
@@ -32,8 +33,12 @@ function ProblemsPage({ match }) {
     if (submissions.size === 0)
         return (<Loading />)
 
-    const tableData = Array.from(submissions.values()).map((submission) => {
-        return (<ProblemRow problem={submission} key={submission.contestId + submission.index} />)
+    // const tableData = Array.from(submissions.values()).map((submission) => {
+    //     return (<ProblemRow problem={submission} key={submission.contestId + submission.index} />)
+    // })
+
+    const tableData = sheetData.map((element) => {
+        return (<ProblemRow content={element} key={element.name} />)
     })
 
     return (
