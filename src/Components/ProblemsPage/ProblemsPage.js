@@ -33,11 +33,21 @@ function ProblemsPage({ match }) {
     console.log(submissions.size)
     const tableData = Array.from(submissions.values()).map((submission) => {
         return (
-            <tr key={submission.name + submission.contestId}>
-                <td>{submission.name}</td>
+            <tr key={submission.name + submission.contestId} onClick={() => {
+                window.open("www.google.com", '_blank').focus()
+            }}>
+                <td>
+                    <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://codeforces.com/problemset/problem/${submission.contestId}/${submission.index}`}>
+                        {submission.name}
+                    </a>
+                </td>
                 <td>{submission.verdict}</td>
                 <td>{submission.index}</td>
                 <td>{submission.contestId}</td>
+                <td>{submission.count}</td>
             </tr>
         )
     })
