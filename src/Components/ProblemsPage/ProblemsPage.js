@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './styles.css'
-import extractSubmissions from '../../Models/submissions'
+import { extractSubmissions } from '../../Models/submissions'
 import Loading from './Loading'
+import ProblemRow from './ProblemRow'
+import sheetData from '../../Models/Sheet1'
 
 function ProblemsPage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
@@ -27,24 +29,29 @@ function ProblemsPage({ match }) {
         }
     }, [handle, submissions.size])
 
+
     if (submissions.size === 0)
         return (<Loading />)
 
-    console.log(submissions.size)
-    const tableData = Array.from(submissions.values()).map((submission) => {
-        return (
-            <tr key={submission.name + submission.contestId}>
-                <td>{submission.name}</td>
-                <td>{submission.verdict}</td>
-                <td>{submission.index}</td>
-                <td>{submission.contestId}</td>
-            </tr>
-        )
+    // const tableData = Array.from(submissions.values()).map((submission) => {
+    //     return (<ProblemRow problem={submission} key={submission.contestId + submission.index} />)
+    // })
+
+    const tableData = sheetData.map((element) => {
+        return (<ProblemRow content={element} key={element.name} submissions={submissions}/>)
     })
 
     return (
-        <div>
-            <table>
+        <div className="overflow-table">
+            <table className="styled-table">
+                <thead>
+                    <tr>
+                        <th>Problem name</th>
+                        <th>Verdict</th>
+                        <th>Tried</th>
+                        {/* <th>Links</th> */}
+                    </tr>
+                </thead>
                 <tbody>
                     {tableData}
                 </tbody>
