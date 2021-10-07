@@ -31,6 +31,7 @@ const verdicts = {
     MEMORY_LIMIT: "Memory limit exceeded",
     RUNTIME: "Runtime error",
     COMPILATION: "Compilation error",
+    NOT_TRIED: "Not tried",
 }
 
 class Submission {
