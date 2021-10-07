@@ -3,7 +3,7 @@ import './styles.css'
 import { extractSubmissions } from '../../Models/submissions'
 import Loading from './Loading'
 import ProblemRow from './ProblemRow'
-import { sheetData } from '../../Models/Sheet1'
+import sheetData from '../../Models/Sheet1'
 
 function ProblemsPage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
@@ -38,7 +38,7 @@ function ProblemsPage({ match }) {
     // })
 
     const tableData = sheetData.map((element) => {
-        return (<ProblemRow content={element} key={element.name} />)
+        return (<ProblemRow content={element} key={element.name} submissions={submissions}/>)
     })
 
     return (
@@ -49,7 +49,7 @@ function ProblemsPage({ match }) {
                         <th>Problem name</th>
                         <th>Verdict</th>
                         <th>Tried</th>
-                        <th>Links</th>
+                        {/* <th>Links</th> */}
                     </tr>
                 </thead>
                 <tbody>
