@@ -13,8 +13,6 @@ function ProblemRow({ problem }) {
                 </a>
             </td>
             <td>{problem.verdict}</td>
-            <td>{problem.index}</td>
-            <td>{problem.contestId}</td>
             <td>{problem.count}</td>
         </tr>
     )
