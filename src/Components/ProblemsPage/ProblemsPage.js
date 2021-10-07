@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './styles.css'
-import extractSubmissions from '../../Models/submissions'
+import { extractSubmissions } from '../../Models/submissions'
 import Loading from './Loading'
+import ProblemRow from './ProblemRow'
 
 function ProblemsPage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
@@ -27,34 +28,24 @@ function ProblemsPage({ match }) {
         }
     }, [handle, submissions.size])
 
+
     if (submissions.size === 0)
         return (<Loading />)
 
-    console.log(submissions.size)
     const tableData = Array.from(submissions.values()).map((submission) => {
-        return (
-            <tr key={submission.name + submission.contestId} onClick={() => {
-                window.open("www.google.com", '_blank').focus()
-            }}>
-                <td>
-                    <a 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={`https://codeforces.com/problemset/problem/${submission.contestId}/${submission.index}`}>
-                        {submission.name}
-                    </a>
-                </td>
-                <td>{submission.verdict}</td>
-                <td>{submission.index}</td>
-                <td>{submission.contestId}</td>
-                <td>{submission.count}</td>
-            </tr>
-        )
+        return (<ProblemRow problem={submission} key={submission.contestId + submission.index} />)
     })
 
     return (
-        <div>
-            <table>
+        <div className="overflow-table">
+            <table className="styled-table">
+                <thead>
+                    <tr>
+                        <th>Problem name</th>
+                        <th>Verdict</th>
+                        <th>Tried</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {tableData}
                 </tbody>
