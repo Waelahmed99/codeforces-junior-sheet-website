@@ -1,4 +1,3 @@
-import './App.css';
 import HomePage from './Components/HomePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HandlePage from './Components/HandlePage';
