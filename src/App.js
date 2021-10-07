@@ -1,6 +1,6 @@
 import HomePage from './Components/HomePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import HandlePage from './Components/HandlePage';
+import ProblemsPage from './Components/ProblemsPage';
 
 function App() {
   return (
@@ -8,8 +8,7 @@ function App() {
       <Router>
 
         <Switch>
-          <Route path='/handle' exact component={HandlePage} />
-          <Route path='/handle/:handle' exact component={HomePage} />
+          <Route path='/handle/:handle' exact component={ProblemsPage} />
           <Route path='/' component={HomePage} />
         </Switch>
 
