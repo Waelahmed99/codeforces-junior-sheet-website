@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './styles.css'
 
 function HandleModal({ closeModal }) {
@@ -31,7 +32,9 @@ function HandleModal({ closeModal }) {
                         Cancel
                     </button>
 
-                    <button>Continue</button>
+                    <Link to={`/handle/${handle}`}>
+                        <button>Continue</button>
+                    </Link>
                 </div>
 
             </div>
