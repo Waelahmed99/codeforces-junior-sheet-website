@@ -66,4 +66,4 @@ class Submission {
     }
 }
 
-export default extractSubmissions
+export { extractSubmissions, verdicts }
