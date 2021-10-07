@@ -44,6 +44,7 @@ function ProblemsPage({ match }) {
                         <th>Problem name</th>
                         <th>Verdict</th>
                         <th>Tried</th>
+                        <th>Links</th>
                     </tr>
                 </thead>
                 <tbody>
