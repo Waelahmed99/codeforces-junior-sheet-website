@@ -7,7 +7,7 @@ function MainPage() {
     return (
         <div>
             <div className="description">
-                <p> Hi there! Let's get to know this website more</p>
+                <h2> Hi there! Let's get to know this website more</h2>
                 <p>
                     {`This website is based on junior's Mostafa Saad's sheet for problem solving
                     Instead of using a static Google Sheet for recording your submissions
