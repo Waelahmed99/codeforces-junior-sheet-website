@@ -1,7 +1,7 @@
 :root {
-    --desc-width: 200px;
+    /* --desc-width: 200px;
     --desc-title-size: 1.5em;
-    --desc-paragraph-size: 1.2em;
+    --desc-paragraph-size: 1.2em; */
 }
 
 .description {
@@ -18,14 +18,14 @@
 
 .description > :first-child {
     font-weight: bold;
-    font-size: var(--desc-title-size);
+    /* font-size: var(--desc-title-size); */
 }
 
 .description > :nth-child(2) {
-    font-size: var(--desc-paragraph-size);
-    padding: 0px var(--desc-width);
+    /* font-size: var(--desc-paragraph-size); */
+    /* padding: 0px var(--desc-width); */
 }
-
+/* 
 @media screen and (max-width: 800px) {
     :root {
         --desc-width: 0px;
@@ -36,4 +36,4 @@
     .description > p {
         white-space: normal;
     }
-}
+} */
