@@ -1,4 +1,4 @@
-const div2C2 = [
+const data = [
     {
         type: 'Link',
         name: 'Watch - Approaching Problem Statement',
@@ -403,7 +403,9 @@ const div2C2 = [
     },
 ]
 
-export default {
+const div2C2 = {
     name: 'div2 C2',
-    data: div2C2
+    data: data
 }
+
+export default div2C2
