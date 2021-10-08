@@ -7,6 +7,7 @@ import sheetData from '../../Models/Sheet1'
 
 function ProblemsPage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
+    const [error, setError] = useState(false)
     const handle = match.params.handle
 
     /*
@@ -19,7 +20,10 @@ function ProblemsPage({ match }) {
             const fetchFromCF = await fetch(`https://codeforces.com/api/user.status?handle=${handle}`)
             const submissions = await fetchFromCF.json()
 
-            setSubmissions(extractSubmissions(submissions.result))
+            if (submissions.status === 'FAILED')
+                setError(true)
+            else
+                setSubmissions(extractSubmissions(submissions.result))
         }
 
         if (submissions.size === 0)
@@ -29,16 +33,15 @@ function ProblemsPage({ match }) {
         }
     }, [handle, submissions.size])
 
+    if (error)
+        return (<div>Error occured</div>)
 
     if (submissions.size === 0)
         return (<Loading />)
 
-    // const tableData = Array.from(submissions.values()).map((submission) => {
-    //     return (<ProblemRow problem={submission} key={submission.contestId + submission.index} />)
-    // })
 
     const tableData = sheetData.map((element) => {
-        return (<ProblemRow content={element} key={element.name} submissions={submissions}/>)
+        return (<ProblemRow content={element} key={element.name} submissions={submissions} />)
     })
 
     return (
