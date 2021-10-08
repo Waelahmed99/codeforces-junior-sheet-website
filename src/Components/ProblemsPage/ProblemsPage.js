@@ -3,7 +3,8 @@ import './styles.css'
 import { extractSubmissions } from '../../Models/submissions'
 import Loading from './Loading'
 import ProblemRow from './ProblemRow'
-import sheetData from '../../Models/Sheet1'
+import sheetData from '../../Models/Sheets'
+import NoHandle from './NoHandle/NoHandle'
 
 function ProblemsPage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
@@ -34,7 +35,7 @@ function ProblemsPage({ match }) {
     }, [handle, submissions.size])
 
     if (error)
-        return (<div>Error occured</div>)
+        return (<NoHandle />)
 
     if (submissions.size === 0)
         return (<Loading />)
