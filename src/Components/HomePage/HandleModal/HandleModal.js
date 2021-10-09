@@ -27,6 +27,7 @@ function HandleModal({ closeModal }) {
 
                 <div className="body">
                     <input
+                        autoFocus
                         type="text"
                         placeholder="Handle"
                         value={handle}
