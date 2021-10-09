@@ -1,14 +1,30 @@
-.sheets-body {
-    width: 100%;
-    justify-content: center;
+.feed-container {
+    width: 100vw;
+    height: 100vh;
     text-align: center;
 }
 
-.sheets-body .title {
-    font-size: 2em;
-    color: #03a9f4;
+.feed-container .header {
+    margin: 20px 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-.sheets-body .content {
-    font-size: 1em;
+.feed-container .title {
+    color: #00c5ff;
+    letter-spacing: 1px;
+    font-size: 3em;
+}
+
+.feed-container .description {
+
+}
+
+.feed-container .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 5vw;
+    padding: 0;
+    list-style-type: none; 
 }

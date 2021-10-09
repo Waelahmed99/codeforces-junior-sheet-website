@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './styles.css'
 import { useLocation, useHistory } from 'react-router-dom'
+import getSheets from "../../Services/GetSheets";
 
 function SheetsPage({ match }) {
+    const [sheets, setSheets] = useState([])
     const history = useHistory()
     const state = useLocation().state
     const handle = match.params.handle
@@ -17,15 +19,15 @@ function SheetsPage({ match }) {
     } catch {
         history.push(`/${handle}`)
     }
-    console.log(submissions)
- 
+
     /*
         Request sheets API call 
            When page loads
     */
     useEffect(() => {
         async function apiCall() {
-            // await getSheets()
+            const t = await getSheets()
+            setSheets(t)
         }
         apiCall()
     }, [])
@@ -33,7 +35,13 @@ function SheetsPage({ match }) {
     return (
         <div className="feed-container">
             <div className="header">
-                <h3>Welcome {handle}</h3>
+                <span className="title">Welcome {handle}</span>
+
+                <span className="description">Choose one of the following sheets</span>
+            </div>
+
+            <div className="cards">
+
             </div>
         </div>
     )
