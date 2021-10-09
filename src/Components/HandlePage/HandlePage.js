@@ -3,11 +3,14 @@ import './styles.css'
 import { extractSubmissions } from '../../Models/submissions'
 import Loading from '../Loading'
 import NoHandle from './NoHandle'
-import { useHistory, useParams, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { fetchSubmissions } from "../../Services/FetchSubmissions";
+
+const responseType = { LOADING: "loading", PASSED: "Passed", ERROR: "Error" }
 
 function HandlePage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
-    const [error, setError] = useState(false)
+    const [response, setResponse] = useState(responseType.LOADING)
     const handle = match.params.handle
     const history = useHistory()
 
@@ -17,20 +20,17 @@ function HandlePage({ match }) {
     */
     useEffect(() => {
 
-        async function fetchSubmissions() {
-            const fetchFromCF = await fetch(`https://codeforces.com/api/user.status?handle=${handle}`)
-            const submissions = await fetchFromCF.json()
-
-            if (submissions.status === 'FAILED')
-                setError(true)
-            else
-                setSubmissions(extractSubmissions(submissions.result))
+        if (response === responseType.LOADING) {
+            const CodeforcesRequest = fetchSubmissions(handle)
+            if (CodeforcesRequest.status === 'FAILED')
+                setResponse(responseType.ERROR)
+            else {
+                setResponse(responseType.PASSED)
+                setSubmissions(extractSubmissions(CodeforcesRequest.result))
+            }
         }
 
-        if (submissions.size === 0)
-            fetchSubmissions()
-
-    }, [handle, submissions.size])
+    }, [handle, response, submissions])
 
 
     /*
@@ -39,13 +39,14 @@ function HandlePage({ match }) {
     */
     useEffect(() => {
 
-        console.log("Entered this useEffect")
-        if (submissions.size !== 0)
-            history.push(`/${handle}/feed`);
+        if (response === responseType.PASSED)
+            history.push({
+                pathname: `/${handle}/feed`, state: { handle: handle, submissions: submissions }
+            });
 
-    }, [submissions, handle, history])
+    }, [response, handle, history, submissions])
 
-    return error ? <NoHandle /> : <Loading />
+    return (response === responseType.ERROR) ? <NoHandle /> : <Loading />
 }
 
 export default HandlePage
