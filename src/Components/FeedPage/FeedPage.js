@@ -11,14 +11,23 @@ function SheetsPage({ match }) {
         If user accessed `/:handle/feed` directly
         Go back to `/:handle` page to extract data.
     */
-    if (state == null)
+    let submissions
+    try {
+        submissions = state.submissions
+    } catch {
         history.push(`/${handle}`)
-
-    const submissions = state.submissions
-
-    // useEffect(() => {
-
-    // }, [])
+    }
+ 
+    /*
+        Request sheets API call 
+           When page loads
+    */
+    useEffect(() => {
+        async function apiCall() {
+            // await getSheets()
+        }
+        apiCall()
+    }, [])
 
     return (
         <div className="feed-container">
