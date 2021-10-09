@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './styles.css'
-import { extractSubmissions } from '../../Models/submissions'
+import { extractSubmissions } from '../../Services/ExtractSubmissions'
 import Loading from '../Loading'
 import NoHandle from './NoHandle'
 import { useHistory } from "react-router-dom";
@@ -9,7 +9,7 @@ import { fetchSubmissions } from "../../Services/FetchSubmissions";
 const responseType = { LOADING: "loading", PASSED: "Passed", ERROR: "Error" }
 
 function HandlePage({ match }) {
-    const [submissions, setSubmissions] = useState(new Map())
+    const [submissions, setSubmissions] = useState(null)
     const [response, setResponse] = useState(responseType.LOADING)
     const handle = match.params.handle
     const history = useHistory()
@@ -40,12 +40,13 @@ function HandlePage({ match }) {
     */
     useEffect(() => {
 
-        if (response === responseType.PASSED)
+        if (response === responseType.PASSED && submissions != null)
             history.push({
                 pathname: `/${handle}/feed`, state: { handle: handle, submissions: submissions }
             });
 
-    }, [response, handle, history, submissions])
+
+    }, [submissions, handle, history, response])
 
     return (response === responseType.ERROR) ? <NoHandle /> : <Loading />
 }
