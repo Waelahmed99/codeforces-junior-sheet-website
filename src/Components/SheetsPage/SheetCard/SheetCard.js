@@ -1,7 +1,5 @@
 import React from "react";
 import './styles.css'
-import sheetThumb from './mostafa-saad.jpeg'
-import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from "react-router-dom";
 

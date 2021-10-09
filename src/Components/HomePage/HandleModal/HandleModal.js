@@ -8,7 +8,6 @@ function HandleModal({ closeModal }) {
 
     return (
         <div className="modalBackground modal" onKeyPress={(event) => {
-            console.log(event)
             if (event.key === 'Enter') {
                 closeModal(false)
                 history.push(`/${handle}`)

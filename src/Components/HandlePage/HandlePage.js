@@ -19,17 +19,18 @@ function HandlePage({ match }) {
         Pass data to [submissions]
     */
     useEffect(() => {
-
-        if (response === responseType.LOADING) {
-            const CodeforcesRequest = fetchSubmissions(handle)
-            if (CodeforcesRequest.status === 'FAILED')
-                setResponse(responseType.ERROR)
-            else {
-                setResponse(responseType.PASSED)
-                setSubmissions(extractSubmissions(CodeforcesRequest.result))
+        async function apiCall() {
+            if (response === responseType.LOADING) {
+                const CodeforcesRequest = await fetchSubmissions(handle)
+                if (CodeforcesRequest.status === 'FAILED')
+                    setResponse(responseType.ERROR)
+                else {
+                    setResponse(responseType.PASSED)
+                    setSubmissions(extractSubmissions(CodeforcesRequest.result))
+                }
             }
         }
-
+        apiCall()
     }, [handle, response, submissions])
 
 
