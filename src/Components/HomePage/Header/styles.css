@@ -12,6 +12,11 @@ nav {
     flex-grow: 1;
 }
 
+.logo img {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 .btn {
     cursor: pointer;
 }

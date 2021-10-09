@@ -28,38 +28,6 @@
     position: relative;
     transition: all .35s;
     color: white;
+    background-color: #00c5ff;
+    border-radius: 35px;
 }
-  
-.wrapper > div span{
-    position: relative;
-    z-index: 2;
-}
-
-.wrapper > div:after{
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: #00c5ff;
-    transition: all .35s;
-}
-  
-.wrapper > div:hover{
-    color: #fff;
-}
-  
-.wrapper > div:hover:after{
-    width: 100%;
-}
-
-.no-underline {
-    text-decoration: none;
-}
-
-
-.modalClass {  
-    text-align: center;  
-    margin-top: 100px;  
-  }  

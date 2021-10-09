@@ -1,24 +1,18 @@
 import React from 'react'
 import './styles.css'
-import FAQ from '../FAQ';
+// import FAQ from '../FAQ';
 import HandleButton from '../HandleButton';
+// import cover from './cover.jpg'
 
 function MainPage() {
     return (
-        <div>
-            <div className="description">
-                <h2> Hi there! Let's get to know this website more</h2>
-                <p>
-                    {`This website is based on junior's Mostafa Saad's sheet for problem solving
-                    Instead of using a static Google Sheet for recording your submissions
-                    here you can focus on solving, and we will do the rest for you!`}
-                </p>
+        <div className="body-container">
+            <div className="sides border">
+                <h1 className="title">Problem solving smart sheet</h1>
+                <p className="description">Solve your sheets faster. You solve, we judge!</p>
 
                 <HandleButton />
-
             </div>
-
-            <FAQ />
         </div>
     )
 }

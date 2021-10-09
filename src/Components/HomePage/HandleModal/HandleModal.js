@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './styles.css'
 
 function HandleModal({ closeModal }) {
     let [handle, setHandle] = useState('')
+    const history = useHistory()
 
     return (
-        <div className="modalBackground modal">
+        <div className="modalBackground modal" onKeyPress={(event) => {
+            console.log(event)
+            if (event.key === 'Enter') {
+                closeModal(false)
+                history.push(`/${handle}`)
+            }
+        }}>
             <div className="modalContainer">
 
                 <div className="titleCloseBtn">
@@ -28,7 +35,7 @@ function HandleModal({ closeModal }) {
                 </div>
 
                 <div className="footer">
-                    <button onClick={() => closeModal(false)} id="cancelBtn">
+                    <button id="cancelBtn" onClick={() => closeModal(false)}>
                         Cancel
                     </button>
 

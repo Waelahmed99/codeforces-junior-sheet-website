@@ -3,7 +3,7 @@ import './styles.css'
 import { extractSubmissions } from '../../Models/submissions'
 import Loading from '../Loading'
 import NoHandle from './NoHandle'
-import { useHistory, useParams, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function HandlePage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())

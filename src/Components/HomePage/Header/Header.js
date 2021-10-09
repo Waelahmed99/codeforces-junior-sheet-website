@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../../logo.svg'
+import logo from './logo.png'
 import './styles.css'
 
 function Header() {
@@ -22,9 +22,9 @@ function Header() {
 
         </nav>
 
-        <h1 className="title"> Mostafa Saad smart sheet </h1>
+        {/* <h1 className="title"> Problem solving smart sheet </h1>
         <h2 className="subtitle"> Solve your sheet faster. You solve, we judge </h2>
-        <img className="descriptive-img" src={logo} alt="main"/>
+        <img className="descriptive-img" src={logo} alt="main"/> */}
     </header>
     )
 }

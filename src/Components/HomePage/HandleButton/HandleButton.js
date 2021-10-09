@@ -9,7 +9,7 @@ function HandleButton() {
         <div>
             <div className="wrapper" onClick={() => setVisibility(!showModal)}>
                 <div>
-                    <span>Get Started!</span>
+                    <span className="button">Get Started!</span>
                 </div>
             </div>
 
