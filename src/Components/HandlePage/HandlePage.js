@@ -41,7 +41,7 @@ function HandlePage({ match }) {
     useEffect(() => {
 
         if (response === responseType.PASSED && submissions != null)
-            history.push({
+            history.replace({
                 pathname: `/${handle}/feed`, state: { handle: handle, submissions: submissions }
             });
 
