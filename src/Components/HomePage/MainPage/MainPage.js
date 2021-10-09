@@ -1,17 +1,20 @@
 import React from 'react'
 import './styles.css'
-// import FAQ from '../FAQ';
 import HandleButton from '../HandleButton';
-// import cover from './cover.jpg'
+import img from './problem-solving.png'
 
 function MainPage() {
     return (
-        <div className="body-container">
-            <div className="sides border">
+        <div className="body-wrapper">
+            <div className="body-container">
                 <h1 className="title">Problem solving smart sheet</h1>
                 <p className="description">Solve your sheets faster. You solve, we judge!</p>
 
                 <HandleButton />
+
+                <div className="body-image"> 
+                    <img src={img} alt="problem-solving" />
+                </div>
             </div>
         </div>
     )

@@ -1,0 +1,22 @@
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+}
+
+.home-wrapper .header {
+    background-color: red;
+    margin:0;
+    z-index: 1;
+}
+
+.home-wrapper .body {
+    flex-grow: 1;
+    margin:0;
+}
+
+.home-wrapper .footer {
+    margin:0;
+    z-index: 1;
+}

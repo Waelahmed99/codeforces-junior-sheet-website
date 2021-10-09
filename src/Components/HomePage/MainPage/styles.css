@@ -1,10 +1,18 @@
+.body-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
 .body-container {
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
+}
+
+.body-image img {
+    margin-top: 20px;
+    width: 250px;
 }
