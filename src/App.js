@@ -1,6 +1,6 @@
 import HomePage from './Components/HomePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import SheetsPage from './Components/SheetsPage/SheetsPage';
+import HandlePage from './Components/HandlePage/HandlePage';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Router>
 
         <Switch>
-          <Route path='/:handle' exact component={SheetsPage} />
+          <Route path='/:handle' exact component={HandlePage} />
           <Route path='/' component={HomePage} />
         </Switch>
 

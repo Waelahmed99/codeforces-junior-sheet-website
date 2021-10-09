@@ -32,7 +32,7 @@ function HandleModal({ closeModal }) {
                         Cancel
                     </button>
 
-                    <Link to={`/handle/${handle}`}>
+                    <Link to={`/${handle}`}>
                         <button>Continue</button>
                     </Link>
                 </div>
