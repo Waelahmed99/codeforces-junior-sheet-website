@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import './styles.css'
-import { useLocation, useHistory } from 'react-router-dom'
+// import { useLocation, useHistory } from 'react-router-dom'
 
 function SheetsPage({ match }) {
-    const history = useHistory()
-    const state = useLocation().state
+    // const history = useHistory()
+    // const state = useLocation().state
     const handle = match.params.handle
 
     /* 
         If user accessed `/:handle/feed` directly
         Go back to `/:handle` page to extract data.
     */
-    let submissions
-    try {
-        submissions = state.submissions
-    } catch {
-        history.push(`/${handle}`)
-    }
+    // let submissions
+    // try {
+    //     submissions = state.submissions
+    // } catch {
+    //     history.push(`/${handle}`)
+    // }
  
     /*
         Request sheets API call 
