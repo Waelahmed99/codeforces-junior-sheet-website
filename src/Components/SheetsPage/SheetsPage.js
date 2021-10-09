@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import './styles.css'
 import { extractSubmissions } from '../../Models/submissions'
 import Loading from './Loading'
-import ProblemRow from './ProblemRow'
+import NoHandle from './NoHandle'
+import SheetCard from "./SheetCard/SheetCard";
 import sheetData from '../../Models/Sheets'
-import NoHandle from './NoHandle/NoHandle'
 
-function ProblemsPage({ match }) {
+function SheetsPage({ match }) {
     const [submissions, setSubmissions] = useState(new Map())
     const [error, setError] = useState(false)
     const handle = match.params.handle
@@ -40,28 +40,31 @@ function ProblemsPage({ match }) {
     if (submissions.size === 0)
         return (<Loading />)
 
-
-    const tableData = sheetData.map((element) => {
-        return (<ProblemRow content={element} key={element.name} submissions={submissions} />)
-    })
+    
+    const sheetsComponents = sheetData.map(element => {
+        return (
+            <SheetCard
+                key={element.id}
+                {...element}
+                handle={handle}
+            />
+        )
+    });
 
     return (
-        <div className="overflow-table">
-            <table className="styled-table">
-                <thead>
-                    <tr>
-                        <th>Problem name</th>
-                        <th>Verdict</th>
-                        <th>Tried</th>
-                        {/* <th>Links</th> */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableData}
-                </tbody>
-            </table>
+        <div className="sheets-body">
+            <div className="header">
+                <h4 className="title"> Welcome {handle}</h4>
+                <p className="content"> Choose between the following sheets </p>
+            </div>
+
+            <div className="sheets">
+                <ul className="cards">
+                    {sheetsComponents}
+                </ul>
+            </div>
         </div>
     )
 }
 
-export default ProblemsPage
+export default SheetsPage

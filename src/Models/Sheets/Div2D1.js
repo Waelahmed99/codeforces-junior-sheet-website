@@ -1,4 +1,4 @@
-const sheetData = [
+const data = [
     {
         type: 'Link',
         name: 'Watch - Approaching Problem Statement',
@@ -403,4 +403,9 @@ const sheetData = [
     },
 ]
 
-export default sheetData
+const div2D1 = {
+    name: 'div2 D1',
+    data: data
+}
+
+export default div2D1

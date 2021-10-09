@@ -1,0 +1,14 @@
+.sheets-body {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.sheets-body .title {
+    font-size: 2em;
+    color: #03a9f4;
+}
+
+.sheets-body .content {
+    font-size: 1em;
+}
