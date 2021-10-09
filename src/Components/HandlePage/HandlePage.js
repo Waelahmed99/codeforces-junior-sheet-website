@@ -35,16 +35,17 @@ function HandlePage({ match }) {
 
 
     /*
-        Navigate to /feed
+        Navigate to `/feed`
         after fetching data.
     */
     useEffect(() => {
 
-        if (response === responseType.PASSED && submissions != null)
+        if (response === responseType.PASSED && submissions != null) {
             history.replace({
-                pathname: `/${handle}/feed`, state: { handle: handle, submissions: submissions }
+                pathname: `/${handle}/feed`, 
+                state: { handle: handle, submissions: submissions }
             });
-
+        }
 
     }, [submissions, handle, history, response])
 
