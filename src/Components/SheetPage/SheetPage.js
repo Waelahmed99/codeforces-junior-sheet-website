@@ -8,6 +8,7 @@ import { getSheetByName } from "../../Services/GetSheets";
 function SheetPage({ match }) {
     const [response, setResponse] = useState(responseType.LOADING)
     const [sheet, setSheet] = useState([])
+    console.log(sheet)
 
     const location = useLocation()
     const name = match.params.id
@@ -32,7 +33,7 @@ function SheetPage({ match }) {
         }
         apiCall()
 
-    }, [])
+    }, [location, name])
 
 
     function getChild(response) {
@@ -43,7 +44,8 @@ function SheetPage({ match }) {
                 return <p>Passed</p>
             case responseType.ERROR:
                 return <p>Error occurred</p>
-
+            default:
+                return <p>Error occurred</p>
         }
     }
 

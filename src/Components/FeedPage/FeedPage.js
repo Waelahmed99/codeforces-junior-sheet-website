@@ -19,11 +19,11 @@ function FeedPage({ match }) {
     */
     useEffect(() => {
         async function apiCall() {
-            const t = await getSheets()
-            if (t.status === 'error')
+            const output = await getSheets()
+            if (output.status === 'error')
                 setResponse(responseType.ERROR)
-            else { 
-                setSheets(t.result)
+            else {
+                setSheets(output.result)
                 setResponse(responseType.PASSED)
             }
         }
@@ -31,19 +31,19 @@ function FeedPage({ match }) {
             If user accessed `/:handle/feed` directly
             Go back to `/:handle` page to extract data.
         */
-        let submissions
         try {
-            submissions = state.submissions
+            const hasSubmissions = state.hasOwnProperty('submissions')
+            if (!hasSubmissions) throw new Error('No submissions found!')
             apiCall()
         } catch {
-            history.push(`/${handle}`)
+            history.replace(`/${handle}`)
         }
-    }, [])
-
+    }, [handle, history, state]) // ??
+ 
     if (response === responseType.LOADING) return <Loading />
 
     const sheetsComponents = sheets.map((el) => {
-        return (<SheetCard key={el._id} sheet={el} handle={handle} />)
+        return (<SheetCard key={el._id} sheet={el} handle={handle} submissions={state.submissions} />)
     })
 
     return (
