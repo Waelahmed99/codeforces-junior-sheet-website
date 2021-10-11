@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './styles.css'
 import { useLocation, useHistory } from 'react-router-dom'
-import getSheets from "../../Services/GetSheets";
+import { getSheets } from "../../Services/GetSheets";
 import SheetCard from "./SheetCard/SheetCard";
 import responseType from '../../Services/Response'
 import Loading from './Loading'
@@ -20,10 +20,12 @@ function FeedPage({ match }) {
     useEffect(() => {
         async function apiCall() {
             const t = await getSheets()
-            setSheets(t)
-
-            // [todo]: handle error state.
-            setResponse(responseType.PASSED)
+            if (t.status === 'error')
+                setResponse(responseType.ERROR)
+            else { 
+                setSheets(t.result)
+                setResponse(responseType.PASSED)
+            }
         }
         /* 
             If user accessed `/:handle/feed` directly
@@ -41,7 +43,7 @@ function FeedPage({ match }) {
     if (response === responseType.LOADING) return <Loading />
 
     const sheetsComponents = sheets.map((el) => {
-        return (<SheetCard key={el._id} {...el} handle={handle} />)
+        return (<SheetCard key={el._id} sheet={el} handle={handle} />)
     })
 
     return (

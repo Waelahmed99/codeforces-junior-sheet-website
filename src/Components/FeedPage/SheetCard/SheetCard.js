@@ -3,14 +3,14 @@ import './styles.css'
 import { useHistory } from "react-router-dom";
 
 // _id, image, description,
-function SheetCard({ author, name, data, difficulty, handle }) {
-    let stars = getStars(difficulty)
+function SheetCard({ sheet, handle }) {
+    let stars = getStars(sheet.difficulty)
     const history = useHistory()
 
     function onTap() {
         history.push({
-            pathname: `/${handle}/feed/${name}`,
-            state: { data }
+            pathname: `/${handle}/feed/${sheet.name}`,
+            state: { sheet }
         })
     }
 
@@ -18,8 +18,8 @@ function SheetCard({ author, name, data, difficulty, handle }) {
         <div className="card-container" onClick={onTap}>
 
             <div className="details">
-                <span className="name">{name}</span>
-                <span className="author">{author}</span>
+                <span className="name">{sheet.name}</span>
+                <span className="author">{sheet.author}</span>
             </div>
 
             <div className="difficulty-container">

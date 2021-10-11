@@ -29,9 +29,7 @@ function ProblemsPage({ match }) {
 
         if (submissions.size === 0)
             fetchSubmissions()
-        return () => {
-            console.log("Cleanup")
-        }
+            
     }, [handle, submissions.size])
 
     if (error)
