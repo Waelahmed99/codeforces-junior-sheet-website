@@ -7,7 +7,7 @@ The idea behind this project is to connect sheets with online judge APIs instead
 This project was mainly designing to facilitate using [Mostafa Saad's](https://github.com/mostafa-saad) junior sheet on [Google sheet](https://goo.gl/unDETI), then the idea expanded to host all problem solving sheets on one place.
 
 ### Project status
-Project is currently **in development**, some functionalities are out to production through our [beta](#Production) publish.
+Project is currently **under development**, some functionalities are out to production through our [beta](#Production) publish.
 
 ## Development
 
