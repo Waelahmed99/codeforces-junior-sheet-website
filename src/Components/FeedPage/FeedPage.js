@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './styles.css'
-import { useLocation, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { getSheets } from "../../Services/GetSheets";
 import SheetCard from "./SheetCard/SheetCard";
 import responseType from '../../Services/Response'
@@ -10,7 +10,6 @@ function FeedPage({ match }) {
     const [sheets, setSheets] = useState([])
     const [response, setResponse] = useState(responseType.LOADING)
     const history = useHistory()
-    const state = useLocation().state
     const handle = match.params.handle
 
     /*
@@ -27,23 +26,13 @@ function FeedPage({ match }) {
                 setResponse(responseType.PASSED)
             }
         }
-        /* 
-            If user accessed `/:handle/feed` directly
-            Go back to `/:handle` page to extract data.
-        */
-        try {
-            const hasSubmissions = state.hasOwnProperty('submissions')
-            if (!hasSubmissions) throw new Error('No submissions found!')
-            apiCall()
-        } catch {
-            history.replace(`/${handle}`)
-        }
-    }, [handle, history, state]) // ??
+        apiCall()
+    }, [handle, history]) // ??
  
     if (response === responseType.LOADING) return <Loading />
 
     const sheetsComponents = sheets.map((el) => {
-        return (<SheetCard key={el._id} sheet={el} handle={handle} submissions={state.submissions} />)
+        return (<SheetCard key={el._id} sheet={el} handle={handle} />)
     })
 
     return (

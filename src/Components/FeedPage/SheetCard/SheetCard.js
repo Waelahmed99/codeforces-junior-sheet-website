@@ -1,17 +1,16 @@
 import React from "react";
 import './styles.css'
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // _id, image, description,
 function SheetCard({ sheet, handle }) {
     let stars = getStars(sheet.difficulty)
     const history = useHistory()
-    const submissions = useLocation().state.submissions
 
     function onTap() {
         history.push({
             pathname: `/${handle}/feed/${sheet.name}`,
-            state: { sheet, submissions }
+            state: { sheet }
         })
     }
 
