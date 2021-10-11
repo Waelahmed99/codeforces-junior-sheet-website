@@ -11,7 +11,7 @@ function SheetPage({ match }) {
     const [sheet, setSheet] = useState([])
 
     const location = useLocation()
-    const name = match.params.id
+    const name = match.params.name
 
     useEffect(() => {
 

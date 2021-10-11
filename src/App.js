@@ -12,7 +12,7 @@ function App() {
         <Switch>
           <Route path='/:handle' exact component={HandlePage} />
           <Route path='/:handle/feed' exact component={FeedPage} />
-          <Route path="/:handle/feed/:id" exact component={SheetPage} />
+          <Route path="/:handle/feed/:name" exact component={SheetPage} />
           <Route path='/' component={HomePage} />
         </Switch>
 
