@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import { verdicts } from '../../../Models/submissions'
+import { verdicts } from '../../../../Services/ExtractSubmissions'
 
 function ProblemRow({ content, submissions }) {
     // content->type 
@@ -19,14 +19,17 @@ function ProblemRow({ content, submissions }) {
 }
 
 function CFRow(content, submissions) {
-    const contestId = content.id.substring(0, content.id.length - 1)
-    const index = content.id.substring(content.id.length - 1)
+    const splitter = content.link.split('/')
+    const contestId = splitter[splitter.length - 2]
+    const index = splitter[splitter.length - 1]
+
     let verdict = verdicts.NOT_TRIED
     let tried = '0'
 
-    if (submissions.has(content.id)) {
-        verdict = submissions.get(content.id).verdict
-        const count = submissions.get(content.id).count
+    const id = contestId + index
+    if (submissions.has(id)) {
+        verdict = submissions.get(id).verdict
+        const count = submissions.get(id).count
         if (count === 0) tried = '🥳'
         else tried = `+${count}`
     }
