@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import './styles.css'
-import { extractSubmissions } from '../../Services/ExtractSubmissions'
 import Loading from '../Loading'
 import NoHandle from './NoHandle'
 import { useHistory } from "react-router-dom";
-import { fetchSubmissions } from "../../Services/FetchSubmissions";
-
-const responseType = { LOADING: "loading", PASSED: "Passed", ERROR: "Error" }
+import checkHandle from '../../Services/CheckHandleExist'
+import responseType from "../../Services/Response";
 
 function HandlePage({ match }) {
-    const [submissions, setSubmissions] = useState(null)
     const [response, setResponse] = useState(responseType.LOADING)
     const handle = match.params.handle
     const history = useHistory()
@@ -20,18 +17,14 @@ function HandlePage({ match }) {
     */
     useEffect(() => {
         async function apiCall() {
-            if (response === responseType.LOADING) {
-                const CodeforcesRequest = await fetchSubmissions(handle)
-                if (CodeforcesRequest.status === 'FAILED')
-                    setResponse(responseType.ERROR)
-                else {
-                    setResponse(responseType.PASSED)
-                    setSubmissions(extractSubmissions(CodeforcesRequest.result))
-                }
-            }
+            const response = await checkHandle(handle)
+            if (response.status === 'FAILED')
+                setResponse(responseType.ERROR)
+            else
+                setResponse(responseType.PASSED)
         }
         apiCall()
-    }, [handle, response, submissions])
+    }, [handle])
 
 
     /*
@@ -40,14 +33,14 @@ function HandlePage({ match }) {
     */
     useEffect(() => {
 
-        if (response === responseType.PASSED && submissions != null) {
+        if (response === responseType.PASSED) {
             history.replace({
-                pathname: `/${handle}/feed`, 
-                state: { handle: handle, submissions: submissions }
+                pathname: `/${handle}/feed`,
+                state: { handle: handle }
             });
         }
 
-    }, [submissions, handle, history, response])
+    }, [handle, history, response])
 
     return (response === responseType.ERROR) ? <NoHandle /> : <Loading />
 }
