@@ -2,6 +2,7 @@ import HomePage from './Components/HomePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HandlePage from './Components/HandlePage/HandlePage';
 import FeedPage from './Components/FeedPage';
+import SheetPage from './Components/SheetPage';
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
 
         <Switch>
           <Route path='/:handle' exact component={HandlePage} />
-          <Route path='/:handle/feed' exact component={FeedPage}/>
+          <Route path='/:handle/feed' exact component={FeedPage} />
+          <Route path="/:handle/feed/:id" exact component={SheetPage} />
           <Route path='/' component={HomePage} />
         </Switch>
 

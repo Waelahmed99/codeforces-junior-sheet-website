@@ -1,27 +1,31 @@
 import React from "react";
 import './styles.css'
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-function SheetCard({ _id, author, name, image, description, data, difficulty, handle }) {
+// _id, image, description,
+function SheetCard({ author, name, data, difficulty, handle }) {
     let stars = getStars(difficulty)
+    const history = useHistory()
+
+    function onTap() {
+        history.push({
+            pathname: `/${handle}/feed/${name}`,
+            state: { data }
+        })
+    }
+
     return (
-        <Link to={`/${handle}/feed/${_id}`} className="card-link">
-            <div className="card-container">
+        <div className="card-container" onClick={onTap}>
 
-                {/* <div className="image-container">
-                    <img className="image" src={image} alt={author} />
-                </div> */}
-
-                <div className="details">
-                    <span className="name">{name}</span>
-                    <span className="author">{author}</span>
-                </div>
-
-                <div className="difficulty-container">
-                    <span className="difficulty">Difficulty: {stars}</span>
-                </div>
+            <div className="details">
+                <span className="name">{name}</span>
+                <span className="author">{author}</span>
             </div>
-        </Link>
+
+            <div className="difficulty-container">
+                <span className="difficulty">Difficulty: {stars}</span>
+            </div>
+        </div>
     )
 }
 

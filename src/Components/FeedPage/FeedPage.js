@@ -6,7 +6,7 @@ import SheetCard from "./SheetCard/SheetCard";
 import responseType from '../../Services/Response'
 import Loading from './Loading'
 
-function SheetsPage({ match }) {
+function FeedPage({ match }) {
     const [sheets, setSheets] = useState([])
     const [response, setResponse] = useState(responseType.LOADING)
     const history = useHistory()
@@ -59,4 +59,4 @@ function SheetsPage({ match }) {
     )
 }
 
-export default SheetsPage
+export default FeedPage
