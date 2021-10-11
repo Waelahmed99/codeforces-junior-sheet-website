@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Welcome to Smart-Sheet project!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Overview
+Welcome to Smart-Sheet open source project, this project is aiming to facilitate practicing problem solving using external sheets from online judge websites (mainly codeforces).
+The idea behind this project is to connect sheets with online judge APIs instead of manually recording progress using Google Sheet or any other note-taking app.
 
-## Available Scripts
+This project was mainly designing to facilitate using [Mostafa Saad's](https://github.com/mostafa-saad) junior sheet on [Google sheet](https://goo.gl/unDETI), then the idea expanded to host all problem solving sheets on one place.
 
-In the project directory, you can run:
+### Project status
+Project is currently **in development**, some functionalities are out to production through our [beta](#Production) publish.
 
-### `yarn start`
+## Development
+
+### Requirements
+For development, you will only need `npm` and `node` installed on your environment
+```
+$ node --version
+v14.18.0
+
+$ npm --version
+6.14.15
+```
+## Installation and Setup 
+Clone the project using Github command
+```
+git clone https://github.com/Waelahmed99/mostafa-saad-junior-sheet-website
+```
+Then use npm to installl required packages <br>
+`npm install`
+
+You can run the following command to start the server <br>
+`npm start` <br>
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To run tests: <br>
+`npm test`
 
-### `yarn test`
+### Frontend
+Website UI is developed using `React` by <a style="text-decoration: none"  rel="noreferrer" href="https://github.com/Waelahmed99">@waelahmed99</a>  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Backend 
+Backend server is developed using `Node.js` by <a style="text-decoration: none"  rel="noreferrer" href="https://github.com/yosefHesham">@yosefHesham</a> <br>
+You can view the backend repository from [here](https://github.com/yosefHesham/smart-sheet-backend).
