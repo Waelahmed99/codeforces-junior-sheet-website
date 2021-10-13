@@ -1,22 +1,24 @@
 import React from 'react'
 import Header from './Header'
 import MainPage from './MainPage'
-import Footer from './Footer'
 import './styles.css'
 
 function HomePage() {
     return (
         <div className="home-wrapper">
+
             <div className="header">
                 <Header />
             </div>
+
             <div className="body">
                 <MainPage />
             </div>
 
-            <div className="footer">
+            {/* <div className="footer">
                 <Footer />
-            </div>
+            </div> */}
+            
         </div>
     )
 }

@@ -1,5 +1,8 @@
 header {
     background-color: white;
+    -moz-box-shadow:    1px 1px 10px 1px #ccc;
+    -webkit-box-shadow: 1px 1px 10px 1px #ccc;
+    box-shadow:         1px 1px 10px 1px #ccc;
 }
 
 nav {
