@@ -43,3 +43,6 @@ Website UI is developed using `React` by <a style="text-decoration: none"  rel="
 ### Backend 
 Backend server is developed using `Node.js` by <a style="text-decoration: none"  rel="noreferrer" href="https://github.com/yosefHesham">@yosefHesham</a> <br>
 You can view the backend repository from [here](https://github.com/yosefHesham/smart-sheet-backend).
+
+## Production
+Beta version is up and `deployed` on [Netlify](https://smart-sheet.netlify.app/)
