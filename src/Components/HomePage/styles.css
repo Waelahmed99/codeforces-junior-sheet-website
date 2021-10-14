@@ -1,8 +1,7 @@
 .home-wrapper {
     display: flex;
     flex-direction: column;
-    grid-template-rows: auto 1fr auto;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .home-wrapper .header {
@@ -12,7 +11,7 @@
 }
 
 .home-wrapper .body {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     margin:0;
 }
 

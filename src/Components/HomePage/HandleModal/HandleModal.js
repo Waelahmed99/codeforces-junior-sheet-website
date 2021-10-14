@@ -1,25 +1,29 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import './styles.css'
 
-function HandleModal({ closeModal }) {
+function HandleModal({ match }) {
     let [handle, setHandle] = useState('')
     const history = useHistory()
 
+    const sheetName = match.params.name
+
+    function returnHome() {
+        history.push('/')
+    }
+
+    function goToSheet() {
+        history.replace(`/${handle}/${sheetName}`)
+    }
+
     return (
-        <div className="modalBackground modal" onKeyPress={(event) => {
-            if (event.key === 'Enter') {
-                closeModal(false)
-                history.push(`/${handle}`)
-            }
+        <div className="modalBackground modal"
+        onKeyDown={(event) => {
+            if (event.key === 'Escape') returnHome()
+            else if (event.key === 'Enter') goToSheet()
         }}>
             <div className="modalContainer">
 
-                <div className="titleCloseBtn">
-                    <button onClick={() => closeModal(false)}>
-                        X
-                    </button>
-                </div>
 
                 <div className="title">
                     <h1>Please pass on your codeforces handle</h1>
@@ -35,13 +39,13 @@ function HandleModal({ closeModal }) {
                 </div>
 
                 <div className="footer">
-                    <button id="cancelBtn" onClick={() => closeModal(false)}>
+                    <button id="cancelBtn" onClick={returnHome}>
                         Cancel
                     </button>
 
-                    <Link to={`/${handle}`}>
-                        <button>Continue</button>
-                    </Link>
+
+                    <button onClick={goToSheet}>Continue</button>
+
                 </div>
 
             </div>

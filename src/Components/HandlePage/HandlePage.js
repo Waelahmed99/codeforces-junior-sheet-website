@@ -1,48 +1,50 @@
 import React, { useState, useEffect } from "react";
 import './styles.css'
+import { useLocation } from 'react-router-dom'
+import responseType from '../../Services/Response'
 import Loading from '../Loading'
-import NoHandle from './NoHandle'
-import { useHistory } from "react-router-dom";
-import checkHandle from '../../Services/CheckHandleExist'
-import responseType from "../../Services/Response";
+import { getSheetByName } from "../../Services/GetSheets";
+import ProblemsTable from "../SheetPage/ProblemsTable";
 
-function HandlePage({ match }) {
+function SheetPage({ match }) {
     const [response, setResponse] = useState(responseType.LOADING)
-    const handle = match.params.handle
-    const history = useHistory()
+    const [sheet, setSheet] = useState([])
 
-    /*
-        Fetch data on page load.
-        Pass data to [submissions]
-    */
+    const location = useLocation()
+    const name = match.params.name
+
     useEffect(() => {
+
         async function apiCall() {
-            const response = await checkHandle(handle)
-            if (response.status === 'FAILED')
+            // const name = location.state
+            let sheet = await getSheetByName(name)
+            if (sheet.status === "error")
                 setResponse(responseType.ERROR)
-            else
+            else {
+                setSheet(sheet.result ? sheet.result.data : sheet.data)
                 setResponse(responseType.PASSED)
+            }
         }
         apiCall()
-    }, [handle])
+
+    }, [location, name])
 
 
-    /*
-        Navigate to `/feed`
-        after fetching data.
-    */
-    useEffect(() => {
-
-        if (response === responseType.PASSED) {
-            history.replace({
-                pathname: `/${handle}/feed`,
-                state: { handle: handle }
-            });
+    function getChild(response) {
+        switch (response) {
+            case responseType.LOADING:
+                return <Loading />
+            case responseType.PASSED: {
+                return <ProblemsTable sheetData={sheet} match={match} />
+            }
+            case responseType.ERROR:
+                return <p>Error occurred</p>
+            default:
+                return <p>Error occurred</p>
         }
+    }
 
-    }, [handle, history, response])
-
-    return (response === responseType.ERROR) ? <NoHandle /> : <Loading />
+    return getChild(response)
 }
 
-export default HandlePage
+export default SheetPage

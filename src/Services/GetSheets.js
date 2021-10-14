@@ -16,7 +16,7 @@ async function getSheets() {
 async function getSheetByName(name) {
     let result
     try {
-        const getRequest = await fetch(`${api}/sheets/${name}`)
+        const getRequest = await fetch(`${api}/sheets/q=name/${name}`)
         result = getRequest.json()
     } catch {
         result = { status: 'error', result: 'Unknown error' }
