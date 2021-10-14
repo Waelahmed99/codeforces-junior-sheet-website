@@ -8,20 +8,16 @@ function HandleModal({ match }) {
 
     const sheetName = match.params.name
 
-    function returnHome() {
-        history.push('/')
-    }
-
-    function goToSheet() {
-        history.replace(`/${handle}/${sheetName}`)
+    const returnHome = () => history.push('/')
+    const goToSheet = () => history.replace(`/${handle}/${sheetName}`)
+    const keyboardPress = (event) => {
+        if (event.key === 'Escape') returnHome()
+        else if (event.key === 'Enter') goToSheet()
     }
 
     return (
         <div className="modalBackground modal"
-        onKeyDown={(event) => {
-            if (event.key === 'Escape') returnHome()
-            else if (event.key === 'Enter') goToSheet()
-        }}>
+            onKeyDown={keyboardPress}>
             <div className="modalContainer">
 
 

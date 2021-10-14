@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { extractSubmissions } from "../../../Services/ExtractSubmissions";
-import { fetchSubmissions } from "../../../Services/FetchSubmissions";
-import responseType from "../../../Services/Response";
-import Loading from "../../Loading";
+import { extractSubmissions } from "../../Services/ExtractSubmissions";
+import { fetchSubmissions } from "../../Services/FetchSubmissions";
+import responseType from "../../Services/Response";
+import Loading from "../Loading";
 import ProblemRow from "./ProblemRow";
-import NoHandle from '../../HandlePage/NoHandle'
+import NoHandle from '../HandlePage/NoHandle'
 import './styles.css'
 
 function ProblemsTable({ match, sheetData }) {

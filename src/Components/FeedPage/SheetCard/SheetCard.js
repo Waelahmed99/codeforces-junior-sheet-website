@@ -7,27 +7,7 @@ function SheetCard({ sheet }) {
     let stars = getStars(sheet.difficulty)
     const history = useHistory()
 
-    function navigate() {
-        history.push({
-            pathname: `/feed/${sheet.name}`,
-            state: { sheet }
-        })
-    }
-
-    const socialLogos = {
-        'ask': askfm,
-        'Github': github,
-        'twitter': twitter,
-        'linkedIn': linkedIn
-    }
-
-    const contactsComponent = []
-    for (const el in sheet.contact) {
-        contactsComponent.push(
-            <a key={el} target="_blank" rel="noopener noreferrer" href={sheet.contact[el]}>
-                <img src={socialLogos[el]} alt={el} className={el === 'ask' ? "askfm" : ""} />
-            </a>)
-    }
+    const navigate = () => history.push(`/feed/${sheet.name}`);
 
     return (
         <div className="card-container">
@@ -44,11 +24,30 @@ function SheetCard({ sheet }) {
             </div>
 
             <div className="contacts-container">
-                {contactsComponent}
+                {socialComponent(sheet.contact)}
             </div>
 
         </div>
     )
+}
+
+function socialComponent(contact) {
+    const socialLogos = {
+        'ask': askfm,
+        'Github': github,
+        'twitter': twitter,
+        'linkedIn': linkedIn
+    }
+
+    const contactsComponent = []
+    for (const el in contact) {
+        contactsComponent.push(
+            <a key={el} target="_blank" rel="noopener noreferrer" href={contact[el]}>
+                <img src={socialLogos[el]} alt={el} className={el === 'ask' ? "askfm" : ""} />
+            </a>)
+    }
+
+    return contactsComponent
 }
 
 function getStars(count) {
