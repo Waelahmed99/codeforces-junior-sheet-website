@@ -1,30 +1,52 @@
 import React from "react";
 import './styles.css'
-import { useHistory } from "react-router-dom";
+import { askfm, github, twitter, linkedIn } from './assets'
+import { useHistory } from "react-router";
 
-// _id, image, description,
-function SheetCard({ sheet, handle }) {
+function SheetCard({ sheet }) {
     let stars = getStars(sheet.difficulty)
     const history = useHistory()
 
-    function onTap() {
+    function navigate() {
         history.push({
-            pathname: `/${handle}/feed/${sheet.name}`,
+            pathname: `/feed/${sheet.name}`,
             state: { sheet }
         })
     }
 
+    const socialLogos = {
+        'ask': askfm,
+        'Github': github,
+        'twitter': twitter,
+        'linkedIn': linkedIn
+    }
+
+    const contactsComponent = []
+    for (const el in sheet.contact) {
+        contactsComponent.push(
+            <a key={el} target="_blank" rel="noopener noreferrer" href={sheet.contact[el]}>
+                <img src={socialLogos[el]} alt={el} className={el === 'ask' ? "askfm" : ""} />
+            </a>)
+    }
+
     return (
-        <div className="card-container" onClick={onTap}>
+        <div className="card-container">
 
-            <div className="details">
-                <span className="name">{sheet.name}</span>
-                <span className="author">{sheet.author}</span>
+            <div className="clickable" onClick={navigate}>
+                <div className="details">
+                    <span className="name">{sheet.name}</span>
+                    <span className="author">{sheet.author}</span>
+                </div>
+
+                <div className="difficulty-container">
+                    <span className="difficulty">Difficulty: {stars}</span>
+                </div>
             </div>
 
-            <div className="difficulty-container">
-                <span className="difficulty">Difficulty: {stars}</span>
+            <div className="contacts-container">
+                {contactsComponent}
             </div>
+
         </div>
     )
 }

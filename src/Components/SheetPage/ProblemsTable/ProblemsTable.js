@@ -4,6 +4,7 @@ import { fetchSubmissions } from "../../../Services/FetchSubmissions";
 import responseType from "../../../Services/Response";
 import Loading from "../../Loading";
 import ProblemRow from "./ProblemRow";
+import NoHandle from '../../HandlePage/NoHandle'
 import './styles.css'
 
 function ProblemsTable({ match, sheetData }) {
@@ -15,7 +16,7 @@ function ProblemsTable({ match, sheetData }) {
     useEffect(() => {
         async function apiCall() {
             const response = await fetchSubmissions(handle)
-            if (response.status === 'error')
+            if (response.status === 'FAILED')
                 setResponse(responseType.ERROR)
             else {
                 setSubmissions(extractSubmissions(response.result))
@@ -26,6 +27,7 @@ function ProblemsTable({ match, sheetData }) {
     }, [handle])
 
     if (response === responseType.LOADING) return <Loading />
+    if (response === responseType.ERROR) return <NoHandle />
 
     const tableData = sheetData.map((el, idx) => {
         return <ProblemRow key={idx} content={el} submissions={submissions} />

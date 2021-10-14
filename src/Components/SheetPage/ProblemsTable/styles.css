@@ -42,17 +42,17 @@
     border-bottom: 2px solid #009879;
 }
 
-.styled-table tbody tr.accepted-row {
+.styled-table tbody tr.accepted-row, .styled-table tr.accepted-row td a  {
     font-weight: bold;
     color: #009879;
 }
 
-.styled-table tbody tr.wrong-row {
+.styled-table tbody tr.wrong-row, .styled-table tr.wrong-row td a {
     font-weight: bold;
     color: #ff1744;
 }
 
-.styled-table tbody tr.tried-row {
+.styled-table tbody tr.tried-row, .styled-table tr.tried-row td a  {
     font-weight: bold;
     color: #ab47bc;
 }
