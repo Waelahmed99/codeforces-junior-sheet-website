@@ -41,7 +41,7 @@ function CFRow(content, submissions) {
                 <a
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={`https://codeforces.com/problemset/problem/${contestId}/${index}`}>
+                    href={content.link}>
                     {content.name}
                 </a>
             </td>
@@ -55,10 +55,18 @@ function UnknownProblem(content) {
     return (
 
         <tr>
-            <td>{content.name}</td>
+            <td>
+                <a 
+                className="unknown"
+                target="_blank"
+                rel="noopener noreferrer"
+                href={content.link}>
+                    {content.name}
+                </a>
+            </td>
             <td>Unknown</td>
             <td>{content.type}</td>
-        </tr>
+        </tr >
     )
 }
 
@@ -66,7 +74,7 @@ function LinkRow(content) {
     return (
         <tr>
             <td colSpan="100%">
-                <a href={content.link} target="_blank" rel="noopener noreferrer">
+                <a className="link" href={content.link} target="_blank" rel="noopener noreferrer">
                     {content.name}
                 </a>
             </td>

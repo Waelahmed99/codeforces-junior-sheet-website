@@ -1,3 +1,12 @@
 a {
     text-decoration: none;
+    font-weight: bold;
+}
+
+td .link {
+    font-weight: 400;
+}
+
+td .unknown {
+    color: #7f7d7d;
 }
