@@ -1,25 +1,23 @@
 import React from 'react'
 import './styles.css'
-import { verdicts } from '../../../../Services/ExtractSubmissions'
+import { verdicts } from '../../../Services/ExtractSubmissions'
 
 function ProblemRow({ content, submissions }) {
     // content->type 
-    // Link, CF, SPOJ, UVA
+    // Link, CF, SPOJ, UVA, Timus, Live 
     switch (content.type) {
-        case "SPOJ":
-        case "UVA":
-            return UnknownProblem(content)
         case "Link":
             return LinkRow(content)
         case "CF":
             return CFRow(content, submissions)
         default:
-            return (<tr></tr>)
+            return UnknownProblem(content)
     }
 }
 
 function CFRow(content, submissions) {
     const splitter = content.link.split('/')
+
     const contestId = splitter[splitter.length - 2]
     const index = splitter[splitter.length - 1]
 
@@ -38,10 +36,7 @@ function CFRow(content, submissions) {
     return (
         <tr className={rowClass}>
             <td>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={content.link}>
+                <a target="_blank" rel="noopener noreferrer" href={content.link}>
                     {content.name}
                 </a>
             </td>
@@ -56,11 +51,7 @@ function UnknownProblem(content) {
 
         <tr>
             <td>
-                <a 
-                className="unknown"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={content.link}>
+                <a className="unknown" target="_blank" rel="noopener noreferrer" href={content.link}>
                     {content.name}
                 </a>
             </td>

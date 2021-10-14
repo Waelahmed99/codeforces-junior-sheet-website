@@ -25,25 +25,15 @@ function HomePage() {
             }
         }
         apiCall()
-    }, []) // ??
+    }, [])
 
-    if (response === responseType.LOADING) return <Loading />
-    
-    return (
+    const comp = (
         <div className="home-wrapper">
-
-            <div className="header">
-                <Header />
-            </div>
-
-
-
-            <div className="body">
-                <MainPage sheets={sheets}/>
-            </div>
-            
+            <Header />
+            <MainPage sheets={sheets} />
         </div>
     )
+    return response === responseType.LOADING ? <Loading /> : comp
 }
 
 export default HomePage

@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import responseType from '../../Services/Response'
 import Loading from '../Loading'
 import { getSheetByName } from "../../Services/GetSheets";
-import ProblemsTable from "../SheetPage/ProblemsTable";
+import ProblemsTable from "../ProblemsTable";
 
 function SheetPage({ match }) {
     const [response, setResponse] = useState(responseType.LOADING)
@@ -34,11 +34,13 @@ function SheetPage({ match }) {
         switch (response) {
             case responseType.LOADING:
                 return <Loading />
-            case responseType.PASSED: {
+
+            case responseType.PASSED:
                 return <ProblemsTable sheetData={sheet} match={match} />
-            }
+
             case responseType.ERROR:
                 return <p>Error occurred</p>
+
             default:
                 return <p>Error occurred</p>
         }
