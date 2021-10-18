@@ -1,6 +1,6 @@
 # Welcome to Smart-Sheet project!
 
-### Using Google Sheet add-on is a better idea, see [this repository](https://github.com/Waelahmed99/junior-sheet-add-on) instead.
+### Using Google Sheets add-on is a better idea, see [this repository](https://github.com/Waelahmed99/junior-sheet-add-on) instead.
 
 ### Overview
 Welcome to Smart-Sheet open source project, this project is aiming to facilitate practicing problem solving using external sheets from online judge websites (mainly codeforces).
